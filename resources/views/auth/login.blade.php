@@ -15,9 +15,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 
     <style>
-        * {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            box-sizing: border-box;
+        :root {
+            --primary-gold: #D4AF37;
+            --secondary-black: #000000;
+            --accent-gold: #FCE68A;
         }
 
         body {
@@ -27,7 +28,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e1b4b 100%);
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
             position: relative;
             overflow: hidden;
         }
@@ -48,7 +49,7 @@
             position: absolute;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
             top: -20%;
             left: -10%;
             animation: float 20s infinite ease-in-out;
@@ -59,7 +60,7 @@
             position: absolute;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
             bottom: -20%;
             right: -10%;
             animation: float 25s infinite ease-in-out reverse;
@@ -89,7 +90,8 @@
             background: white;
             border-radius: 24px;
             padding: 48px 40px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             animation: slideUp 0.6s ease forwards;
         }
 
@@ -114,21 +116,21 @@
             width: 88px;
             height: 88px;
             border-radius: 24px;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background: linear-gradient(135deg, #D4AF37, #F4C430);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 24px;
-            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.35);
         }
 
         .login-header .icon-wrapper i {
             font-size: 40px;
-            color: white;
+            color: black;
         }
 
         .login-header h4 {
-            color: #1e293b;
+            color: black;
             font-weight: 700;
             font-size: 1.75rem;
             margin: 0 0 8px;
@@ -167,28 +169,36 @@
         }
 
         .input-group input {
-            width: 100%;
-            padding: 16px 16px 16px 52px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            color: #1e293b;
+            width: 100% !important;
+            height: 3rem !important;
+            /* Materialize override */
+            padding: 0 16px 0 52px !important;
+            /* Materialize override */
+            border: 2px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+            font-size: 1rem !important;
+            color: #1e293b !important;
             transition: all 0.2s ease;
-            outline: none;
+            outline: none !important;
+            background-color: #f8fafc !important;
+            /* Light bg for input */
+            box-sizing: border-box !important;
+            margin: 0 !important;
         }
 
         .input-group input:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            border-color: #D4AF37 !important;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1) !important;
+            background-color: white !important;
         }
 
         .input-group input:focus+i,
         .input-group .input-wrapper:focus-within i {
-            color: #2563eb;
+            color: #D4AF37 !important;
         }
 
         .input-group input::placeholder {
-            color: #94a3b8;
+            color: #94a3b8 !important;
         }
 
         .remember-row {
@@ -208,9 +218,15 @@
         }
 
         .remember-row input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #2563eb;
+            width: 18px !important;
+            height: 18px !important;
+            accent-color: #D4AF37 !important;
+            position: relative !important;
+            /* Override Materialize hidden state */
+            opacity: 1 !important;
+            /* Override Materialize hidden state */
+            pointer-events: auto !important;
+            /* Override Materialize pointer events */
         }
 
         .btn-login {
@@ -218,8 +234,9 @@
             padding: 16px;
             border: none;
             border-radius: 12px;
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            color: white;
+            background: linear-gradient(135deg, #000000, #333);
+            color: #D4AF37;
+            border: 1px solid #D4AF37;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -228,12 +245,14 @@
             justify-content: center;
             gap: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
 
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(37, 99, 235, 0.45);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2);
+            background: #D4AF37;
+            color: black;
         }
 
         .btn-login:active {
@@ -288,8 +307,9 @@
         .footer-text {
             text-align: center;
             margin-top: 32px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.85rem;
+            font-weight: 500;
         }
 
         @media (max-width: 480px) {
@@ -355,7 +375,7 @@
         </div>
 
         <p class="footer-text">
-            Sistema de Gestión &copy; {{ date('Y') }}
+            Hecho por Abrahan Taborda Echavarria - Coder Riwi 2026
         </p>
     </div>
 
